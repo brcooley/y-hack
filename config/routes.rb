@@ -50,6 +50,12 @@ YHack::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'main#index'
 
+  resources :dashboard
+
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
