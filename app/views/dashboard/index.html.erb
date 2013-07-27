@@ -8,7 +8,10 @@
 	<%= render partial: "newtask" %>
 </div>
 <footer class="row">
-	<div id="stat-summary">
-		<p class="span-6">You <% %> by an average of <% %> minute(s)</p>
+	<div id="stat-summary span-6">
+		<p>You <% %> by an average of <% %> minute(s)</p>
 	</div>
 </footer>
+<%= javascript tag do %>
+	cur_user = '<% current_user %>';
+<% end %>

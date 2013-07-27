@@ -11,7 +11,7 @@
 			}
 			$.ajax({
 				type: 'POST',
-				url: '/users/<% current_user %>/tasks',
+				url: '/users/' + cur_user + '/tasks',
 				data: event,
 				success: function() {
 					console.log('Task saved');
