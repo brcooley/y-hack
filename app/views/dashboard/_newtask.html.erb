@@ -1,7 +1,10 @@
 <div class="task span-12" id="newtask">
-	<div class="name" contenteditable="true">Name</div>
-	<div class="tag" contenteditable="true">Tag</div>
-	
+  <%= form_for @task, :url=>user_tasks_path(current_user), :remote=>true do |t| %>
+    <div class="name" contenteditable="true" id="task_description" name="task[description]">Name</div>
+    <div class="duration" contenteditable="true" id="task_duration" name="task[duration]">Tag</div>
+    <p class="button"><%= t.submit %></p>
+  <% end %>
+
 	<div class="bignum guess" contenteditable="true">10</div>
 	<div class="label">minutes</div>
 	<div class="label">your guess</div>
