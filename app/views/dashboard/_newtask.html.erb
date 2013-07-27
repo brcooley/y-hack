@@ -12,6 +12,15 @@
    .task:hover {
    	background-color: #2C3E50;
    }
+
+   .add {
+   	margin-top: 10px;
+   }
+
+   .bignum {
+   	font-size: 60px;
+   	font-weight: 800;
+   }
 </style>
 
 <script>
@@ -20,12 +29,13 @@
 	}
 </script>
 
-<input type="button" class="btn btn-inverse" name="answer" value="Make a new estimate" onclick="showDiv()" />
 
-<div id="welcomeDiv"  style="display:none;" class="answer_list" > WELCOME</div>
 
 
 <div class="container">
+
+	<input type="button" class="btn btn-inverse row-fluid" id="add" value="Make a new estimate" onclick="showDiv()" style="margin-top: 10px; width: 101.6%;" />
+
 	<div class="task row-fluid" id="newtask" style="display:none;">
 		<div class="span">
 			<div class="description" contenteditable="true">Description</div>
