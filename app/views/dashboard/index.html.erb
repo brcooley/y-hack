@@ -3,7 +3,9 @@
     html, body {
       background-color: #1ABC9C;
     }
-
+    .none {
+    	display: none;
+    }
 </style>
 
 
@@ -19,17 +21,17 @@
   <div class="modal-body">
     <p>Enter the information for your new task.</p>
     <p>Keep in mind Hofstadter's Law: it always takes longer than you expect, even when you take into account Hofstadter's Law.)</p>
-    <input type="text" name="description" value="" placeholder="Task name" class="span3">
+    <input type="text" name="description" placeholder="Task name" class="span3">
     <input type="text" name="tags" placeholder="Tags" class="tm-input"/>
     <input type="text" name="duration" placeholder="How long will this take in minutes?" class="span3">
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
+    <button class="btn btn-primary" id="save-btn">Save changes</button>
   </div>
 </div>
 
-<div id="wrap">
+<div id="wrap" data-url = "<%= user_tasks_path(current_user) %>">
   <%= render :partial=> "tasks/new" %>
 </div>
 
@@ -55,14 +57,14 @@
 		// savebtn[0].onclick = null;
 		savebtn.click(function() {
       var event = {task: {
-        'description': $('input[name="description"]').html(),
-        'tag': $('input[name="tag"]').html(),
-        'duration': $('input[name="duration"]').html()
+        'description': $('input[name="description"]').val(),
+        'tag': $('.tm-tag > span').html(),
+        'duration': $('input[name="duration"]').val()
       }};
       console.log(event);
 			$.ajax({
 				type: 'POST',
-				url: $('#task-feed').data('url'),
+				url: $('#wrap').data('url'),
 				data: event,
 				success: function() {
 					console.log('Task saved');
