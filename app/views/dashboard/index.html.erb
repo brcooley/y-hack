@@ -19,7 +19,7 @@
   <div class="modal-body">
     <p>Enter the information for your new task.</p>
     <p>Keep in mind Hofstadter's Law: it always takes longer than you expect, even when you take into account Hofstadter's Law.)</p>
-    <input type="text" value="" placeholder="Task name" class="span3">
+    <input type="text" name="description" value="" placeholder="Task name" class="span3">
     <input type="text" name="tags" placeholder="Tags" class="tm-input"/>
     <input type="text" name="duration" placeholder="How long will this take in minutes?" class="span3">
   </div>
@@ -52,11 +52,12 @@
 	$(document).ready(function() {
 		// Save task
 		var savebtn = $('#save-btn')
-		savebtn[0].onclick = null;
+		// savebtn[0].onclick = null;
 		savebtn.click(function() {
       var event = {task: {
-        'description': $('.description').html(),
-        'tag': $('.tag').html(),
+        'description': $('input[name="description"]').html(),
+        'tag': $('input[name="tag"]').html(),
+        'duration': $('input[name="duration"]').html()
       }};
       console.log(event);
 			$.ajax({
