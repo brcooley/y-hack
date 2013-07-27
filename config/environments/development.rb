@@ -37,4 +37,9 @@ YHack::Application.configure do
 
   # Support for better_errors via vagrant
   BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+
+  # Facebook secrets
+  # Super fricken hacky
+  ENV['FACEBOOK_APP_ID'] = "282960985177356";
+  ENV['FACEBOOK_SECRET'] = "8e631af26457436e7a2503c9c4feb693";
 end
