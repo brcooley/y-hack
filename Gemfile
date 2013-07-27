@@ -7,6 +7,9 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
+group :development do
+  gem 'better_errors'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,13 +25,23 @@ end
 
 gem 'jquery-rails'
 
+# Improve rails error pages
 gem 'better_errors'
-gem 'binding_of_caller'
+gem 'binding_of_caller', '>=0.7.1'
+
+# Bootstrap, duh
 gem 'bootstrap-sass'
+gem 'flatui-rails'
+
+# Faster server
 gem 'thin'
 
+# Linux JS compatibility
 gem "execjs"
 gem "therubyracer"
+
+# Fb/twitter auth
+gem "omniauth-facebook"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -43,4 +56,4 @@ gem "therubyracer"
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+# gem 'debugger'

@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_flat-ui
 //= require bootstrap
 //= require_tree .

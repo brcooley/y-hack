@@ -34,4 +34,7 @@ YHack::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Support for better_errors via vagrant
+  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
 end
