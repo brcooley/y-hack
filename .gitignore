@@ -36,3 +36,4 @@ nosetests.xml
 
 # Ignore application configuration
 /config/application.yml
+*.db
