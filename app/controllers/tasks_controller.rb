@@ -4,7 +4,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    current_user.tasks.create
+    puts params
+    current_user.tasks.create(params[:task])
     @tasks = current_user.tasks
     respond_to do |format|
       format.js
