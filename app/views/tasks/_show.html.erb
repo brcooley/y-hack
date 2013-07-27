@@ -24,16 +24,39 @@
    }
 
    .delete-btn {
-    padding: 1px;
+    padding: 2px;
+    float: right;
    }
 
    .tag {
     display: inline-block;
    }
+
+   .display-task {
+    margin: 15px auto;
+    width: 80%;
+   }
+
+   .muted {
+    display: inline;
+   }
+
+   .start-btn {
+    -webkit-transition: all .2s ease-in-out;
+    padding: 10px;
+    margin: 5px;
+   }
+
+   .on-track {
+    background: #2ecc71;
+    -webkit-border-radius: 4px;
+   }
 </style>
 
 <script>
+
   $(document).ready(function() {
+
     $('.delete-btn').click(function() {
       var task_id = $(this).parent().data('tid');
       var user_id = $(this).parent().data('uid');
@@ -46,23 +69,46 @@
         }
       })
     })
+
+    $('.start-btn').click(function() {
+      $(this).html('0:00')
+        .addClass('bignum')
+        .addClass('on-track')
+        .removeClass('btn')
+        .removeClass('btn-success')
+        .after('<div class="label">elapsed time</div>');
+
+      var start = new Date;
+      var btn = $(this)
+
+      setInterval(function() {
+        var cur_sec = Math.round((new Date - start) / 1000);
+        var cur_min = 0;
+        while (cur_sec >= 60) {
+          cur_min += 1;
+          cur_sec -= 60;
+        }
+        btn.html(cur_min + ':' + (cur_sec < 10 ? '0' : '') + cur_sec);
+            
+      }, 1000);
+    })
   });
 </script>
 
 <% @tasks.each do |t| %>
   <div class="row" data-url="<%= edit_user_task_path(current_user, t) %>">
     <div class="container">
-      <div class="task row-fluid" id="display-task">
+      <div class="task row-fluid display-task">
         <div class="span" data-tid="<%= t.id %>" data-uid="<%= current_user.id %>">
           <div class="description span-3"><%= t.description %></div>
           <div class="tag span-3"><%= t.tag %></div>
           <div class="bignum guess"><%= t.duration %></div>
-          <div class="label">minutes</div>
+          <div class="muted">minutes</div>
           <div class="label">your guess</div>
           <div class="bignum estimate"><%= t.estimated_time or t.duration %></div>
-          <div class="label">minutes</div>
+          <div class="muted">minutes</div>
           <div class="label">our estimate</div>
-          <div class="start-btn"></div>
+          <div class="btn btn-success start-btn">Start &#x25B6;</div>
           <div class="btn btn-danger delete-btn">x</div>
         </div>
       </div>
