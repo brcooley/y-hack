@@ -5,18 +5,14 @@
     }
 
 </style>
+
 <div id="wrap">
-  <div class="row" id="task-feed" data-url="<%= user_tasks_path(current_user) %>">
-    <%= render :partial=> "tasks/new" %>
-	</div>
+  <%= render :partial=> "tasks/new" %>
 </div>
 
+
 <div id="wrap2">
-  <% @tasks.each do |t| %>
-    <div class="row" data-url="<%= edit_user_task_path(current_user, t) %>">
-      <%= render :partial=> "tasks/show" %>
-    </div>
-  <% end %>
+  <%= render :partial=> "tasks/show" %>
 </div>
 
 <footer class="row">

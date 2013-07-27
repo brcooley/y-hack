@@ -29,21 +29,24 @@
 	}
 </script>
 
+<% @tasks.each do |t| %>
+  <div class="row" data-url="<%= edit_user_task_path(current_user, t) %>">
+    <div class="container">
+      <div class="task row-fluid" id="display-task">
+        <div class="span">
+          <div class="description"><%= t.description %></div>
+          <div class="tag"><%= t.tag %></div>
+          <div class="bignum guess" contenteditable="true">10</div>
+          <div class="label">minutes</div>
+          <div class="label">your guess</div>
+          <div class="start-btn"></div>
+          <div class="btn" id="edit-btn">Edit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 
 
-<div class="container">
 
-	<div class="task row-fluid" id="display-task">
-		<div class="span">
-			<div class="description" contenteditable="true">Description</div>
-			<div class="tag" contenteditable="true">Tag</div>
-			
-			<div class="bignum guess" contenteditable="true">10</div>
-			<div class="label">minutes</div>
-			<div class="label">your guess</div>
-			<div class="start-btn"></div>
-			<div class="btn" id="save-btn">Save</div>
-		</div>
-	</div>
-</div>
