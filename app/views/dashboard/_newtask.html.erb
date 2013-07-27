@@ -5,29 +5,28 @@
    	padding: 10px;
    	margin-top: 10px;
    	color: white;
-
+   	-webkit-transition: all .2s ease-in-out;
+ 	-moz-transition: all .2s ease-in-out;
    }
 
    .task:hover {
-   	background-color: #22495E;
+   	background-color: #2C3E50;
    }
 </style>
 
-<div class="container">
-	<div class="task row-fluid" id="newtask">
-		<div class="span">
-			<div class="name" contenteditable="true">Name</div>
-			<div class="tag" contenteditable="true">Tag</div>
-			
-			<div class="bignum guess" contenteditable="true">10</div>
-			<div class="label">minutes</div>
-			<div class="label">your guess</div>
-			<div class="start-btn"></div>
-			<div class="btn" id="save-btn">Save</div>
-		</div>
-	</div>
+<script>
+	function showDiv() {
+	   document.getElementById('newtask').style.display = "block";
+	}
+</script>
 
-		<div class="task row-fluid" id="newtask">
+<input type="button" class="btn btn-inverse" name="answer" value="Make a new estimate" onclick="showDiv()" />
+
+<div id="welcomeDiv"  style="display:none;" class="answer_list" > WELCOME</div>
+
+
+<div class="container">
+	<div class="task row-fluid" id="newtask" style="display:none;">
 		<div class="span">
 			<div class="name" contenteditable="true">Name</div>
 			<div class="tag" contenteditable="true">Tag</div>
