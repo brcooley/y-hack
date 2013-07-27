@@ -31,7 +31,7 @@ gem 'binding_of_caller', '>=0.7.1'
 
 # Bootstrap, duh
 gem 'bootstrap-sass'
-gem 'flatui-rails'
+gem 'flat-ui-rails'
 
 # Faster server
 gem 'thin'
