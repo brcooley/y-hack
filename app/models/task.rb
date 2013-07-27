@@ -10,7 +10,7 @@ class Task < ActiveRecord::Base
     @path = '/'
 
     @body = {'current_task' => self, 'past_tasks' => self.user.tasks}.to_json
-    puts 'here'
+    puts @body
 
     initheader={'Content-Type' =>'application/json'}
     request = Net::HTTP::Post.new(@path, initheader)
