@@ -25,8 +25,8 @@
 		savebtn[0].onclick = null;
 		savebtn.click(function() {
       var event = {task: {
-        'name': $('#newtask > .name').html(),
-        'duration': $('#newtask > .tag').html(),
+        'description': $('.description').html(),
+        'tag': $('.tag').html(),
       }};
       console.log(event);
 			$.ajax({
