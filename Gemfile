@@ -46,6 +46,7 @@ gem "omniauth-facebook"
 
 # For env var setting
 gem 'figaro'
+gem 'certified'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
