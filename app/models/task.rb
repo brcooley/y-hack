@@ -16,6 +16,6 @@ class Task < ActiveRecord::Base
     request = Net::HTTP::Post.new(@path, initheader)
     request.body = @body
     response = Net::HTTP.new(@host, @port).start {|http| http.request(request) }
-    puts response
+    puts response.body
   end
 end
