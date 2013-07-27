@@ -5,6 +5,28 @@
     }
 
 </style>
+
+<!-- Button to trigger modal -->
+<a href="#myModal" role="button" class="btn btn-info" data-toggle="modal">Make a new estimate</a>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>Enter the information for your new task.</p>
+    <p>Keep in mind Hofstadter's Law: it always takes longer than you expect, even when you take into account Hofstadter's Law.)</p>
+    <input type="text" value="" placeholder="Task name" class="span3">
+    <input type="text" name="tags" placeholder="Tags" class="tm-input"/>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div>
+</div>
+
 <div id="wrap">
   <div class="row" id="task-feed" data-url="<%= user_tasks_path(current_user) %>">
     <%= render :partial=> "tasks/new" %>
@@ -25,23 +47,7 @@
 	</div>
 </footer>
 
-<!-- Button to trigger modal -->
-<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
- 
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body...</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
-  </div>
-</div>
+
 
 
 <script>
