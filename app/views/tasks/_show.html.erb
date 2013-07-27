@@ -6,11 +6,19 @@
    	margin-top: 10px;
    	color: white;
    	-webkit-transition: all .2s ease-in-out;
- 	-moz-transition: all .2s ease-in-out;
+ 	  -moz-transition: all .2s ease-in-out;
    }
 
    .task:hover {
    	background-color: #2C3E50;
+   }
+
+   .completed {
+    background-color: rgba(58, 59, 60, 0.15);
+   }
+
+   .tag-field {
+    display: block;
    }
 
    .add {
@@ -23,18 +31,22 @@
    	font-weight: 800;
    }
 
-   .delete-btn {
-    padding: 2px;
-    float: right;
+   .bignum.first {
+    clear: left;
    }
 
    .tag {
-    display: inline-block;
+    /*display: block;*/
+    /*margin-left: 1em;*/
+    font-variant: small-caps;
+    /*padding: 2px;*/
+    /*background: #999;*/
+    /*-webkit-border-radius: 3px;*/
    }
 
    .display-task {
     margin: 15px auto;
-    width: 80%;
+    width: 90%;
    }
 
    .muted {
@@ -47,8 +59,20 @@
     margin: 5px;
    }
 
+   .complete-btn, .delete-btn {
+    padding: 10px;
+    margin: 5px;
+   }
+
    .on-track {
     background: #2ecc71;
+    padding-top: 0;
+    padding-bottom: 0;
+    -webkit-border-radius: 4px;
+   }
+
+   .off-track {
+    background: #e74c3c;
     -webkit-border-radius: 4px;
    }
 </style>
@@ -56,6 +80,13 @@
 <script>
 
   $(document).ready(function() {
+
+    function reset_timer(start_btn, timer_id) {
+      clearInterval(timer_id);
+      start_btn.html(start_btn.html().split(':')[0])
+      start_btn.removeClass('start-btn')
+               .after('<div class="muted">minutes</div>');
+    }
 
     $('.delete-btn').click(function() {
       var task_id = $(this).parent().data('tid');
@@ -80,17 +111,48 @@
 
       var start = new Date;
       var btn = $(this)
+      var changed = false;
 
-      setInterval(function() {
+      var my_timer = setInterval(function() {
         var cur_sec = Math.round((new Date - start) / 1000);
         var cur_min = 0;
         while (cur_sec >= 60) {
           cur_min += 1;
           cur_sec -= 60;
         }
-        btn.html(cur_min + ':' + (cur_sec < 10 ? '0' : '') + cur_sec);
-            
+
+        if (!changed && cur_min >= btn.siblings('.guess').html()) {
+          btn.addClass('off-track')
+             .removeClass('on-track');
+          changed = true;
+        }
+
+        btn.html(cur_min + ':' + (cur_sec < 10 ? '0' : '') + cur_sec);      
       }, 1000);
+
+      $(this).data('timer-id', my_timer)
+
+      $.ajax({
+        type: 'POST',
+        data: {},
+        url: $(this).data('url'),
+        success: function() {
+          console.log('Task started');
+        }
+      })
+    })
+
+    $('.complete-btn').click(function() {
+      $(this).parent().parent().addClass('completed')
+      reset_timer($(this).siblings('.start-btn'), $(this).siblings('.start-btn').data('timer-id'));
+      $.ajax({
+        type: 'POST',
+        data: {'time_elapsed': 5},
+        url: $(this).data('url'),
+        success: function() {
+          console.log('Task completed');
+        }
+      })
     })
   });
 </script>
@@ -101,14 +163,15 @@
       <div class="task row-fluid display-task">
         <div class="span" data-tid="<%= t.id %>" data-uid="<%= current_user.id %>">
           <div class="description"><%= t.description %></div>
-          <div class="tag">Tag: <%= t.tag %></div>
+          <div class="tag-field">Tags: <span class="tag label"><%= t.tag %></span></div>
           <div class="bignum guess"><%= t.duration %></div>
           <div class="muted">minutes</div>
           <div class="label">your guess</div>
           <div class="bignum estimate"><%= t.estimated_time or t.duration %></div>
           <div class="muted">minutes</div>
           <div class="label">our estimate</div>
-          <div class="btn btn-success start-btn">Start &#x25B6;</div>
+          <div class="btn btn-success start-btn" data-url="<%= start_user_task_path(current_user, t) %>">Start &#x25B6;</div>
+          <div class="btn btn-info complete-btn" data-url="<%= finish_user_task_path(current_user, t) %>">Complete</div>
           <div class="btn btn-danger delete-btn">x</div>
         </div>
       </div>
