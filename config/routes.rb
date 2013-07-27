@@ -50,7 +50,11 @@ YHack::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'main#index'
 
-  resources :dashboard, :users
+  resources :dashboard
+
+  resources :users do
+    resources :tasks
+  end
 
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
