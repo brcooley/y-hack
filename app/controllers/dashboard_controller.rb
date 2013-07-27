@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @task = current_user.tasks.new
+    @tasks = current_user.tasks
   end
 end

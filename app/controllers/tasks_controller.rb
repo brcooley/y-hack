@@ -12,4 +12,15 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def show
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+  end
+
 end

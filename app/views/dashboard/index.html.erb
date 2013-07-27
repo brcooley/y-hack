@@ -7,8 +7,16 @@
 </style>
 <div id="wrap">
   <div class="row" id="task-feed" data-url="<%= user_tasks_path(current_user) %>">
-		<%= render partial: "newtask" %>
+    <%= render :partial=> "tasks/new" %>
 	</div>
+</div>
+
+<div id="wrap2">
+  <% @tasks.each do |t| %>
+    <div class="row" data-url="<%= edit_user_task_path(current_user, t) %>">
+      <%= render :partial=> "tasks/show" %>
+    </div>
+  <% end %>
 </div>
 
 <footer class="row">
@@ -16,6 +24,24 @@
 		<p>You <% %> by an average of <% %> minute(s)</p>
 	</div>
 </footer>
+
+<!-- Button to trigger modal -->
+<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body...</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div>
+</div>
 
 
 <script>
