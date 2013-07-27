@@ -7,14 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-	<header class="navbar navbar-fixed-top" id="">
-	  <nav class="navbar-inner">
-	    <div class="container">
-	      <%= render 'layouts/navigation' %>
-	    </div>
-	  </nav>
-	</header>
+  <% unless @homepage %>
+    <header class="navbar navbar-fixed-top" id="">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render 'layouts/navigation' %>
+        </div>
+      </nav>
+    </header>
+  <% end %>
 
 <%= yield %>
 
