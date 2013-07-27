@@ -1,3 +1,4 @@
 class Task < ActiveRecord::Base
-  attr_accessible :title, :body
+  belongs_to :user
+  attr_accessible :description, :duration, :start
 end

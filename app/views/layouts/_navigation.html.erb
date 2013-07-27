@@ -1,9 +1,13 @@
 <ul class="nav pull-left" id="user_nav">
+	<h1>Estimately</h1>
+</ul>
+<ul class="nav pull-right" id="user_nav" style="
+    padding-top: 18px;">
   <% if current_user %>
     Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
   <% else %>
     <%= link_to "Sign in with facebook", "/auth/facebook", id: "fb" %>
   <% end %>
-</div>
+  </ul>
 
