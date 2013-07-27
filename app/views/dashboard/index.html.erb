@@ -21,6 +21,7 @@
     <p>Keep in mind Hofstadter's Law: it always takes longer than you expect, even when you take into account Hofstadter's Law.)</p>
     <input type="text" value="" placeholder="Task name" class="span3">
     <input type="text" name="tags" placeholder="Tags" class="tm-input"/>
+    <input type="text" name="duration" placeholder="How long will this take in minutes?" class="span3">
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -47,6 +48,7 @@
 
 
 <script>
+  $(".tm-input").tagsManager();
 	$(document).ready(function() {
 		// Save task
 		var savebtn = $('#save-btn')
