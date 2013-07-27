@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.create(params[:task])
     @task.analyze
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.reverse
     respond_to do |format|
       format.js
     end
@@ -21,10 +21,15 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.reverse
     respond_to do |format|
       format.js
     end
+  end
+
+  def start_task
+    @task = Task.find(params[:id])
+
   end
 
 end
