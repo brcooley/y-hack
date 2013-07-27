@@ -1,16 +1,31 @@
-  <style type="text/css">
-      /* Override some defaults */
-      html, body {
-        background-color: #1ABC9C;
-      }
-     
-    </style>
-
-<div class="span-9" id="event-feed">
-	Events go here
+<style type="text/css">
+    /* Override some defaults */
+    html, body {
+      background-color: #1ABC9C;
+    }   
+</style>
+<div class="row" id="task-feed">
+	<%= render partial: "account" %>
 </div>
 <script>
 	$(document).ready(function() {
-		console.log('here');
+		// Save task
+		var savebtn = $('#save-btn')
+		savebtn[0].onclick = null;
+		savebtn.click(function() {
+			var event = {
+				'name': $('#newtask > .name').html(),
+				'tag': $('#newtask > .tag').html(),
+				'guess': $('#newtask > .guess').html()
+			}
+			$.ajax({
+				type: 'POST',
+				url: '',
+				data: event,
+				success: function() {
+					console.log('Task saved');
+				}
+			});
+		});
 	})
 </script>
