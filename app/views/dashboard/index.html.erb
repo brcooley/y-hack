@@ -30,7 +30,7 @@
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary" data-dismiss="modal" id="save-btn">Save changes</button>
+    <button class="btn btn-primary" data-dismiss="modal" id="save-btn">Save</button>
   </div>
 </div>
 
@@ -64,7 +64,11 @@
         	'tag': $('.tm-tag > span').html(),
 	        'duration': $('input[name="duration"]').val()
 	      }};
-    	  console.log(event);
+        console.log(event);
+        $('input[name="description"]').val("");
+        $('input[name="duration"]').val("");
+        $('.tm-tag > span').html("");
+        $('.tm-tag').remove();
 		  $.ajax({
 			type: 'POST',
 			url: $('#wrap').data('url'),
