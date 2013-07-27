@@ -38,3 +38,4 @@ nosetests.xml
 /config/application.yml
 *.db
 *.sqlite3
+*.lock
