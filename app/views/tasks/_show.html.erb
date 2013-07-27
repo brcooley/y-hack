@@ -18,12 +18,17 @@
    }
 
    .bignum {
+    display: inline-block;
    	font-size: 60px;
    	font-weight: 800;
    }
 
    .delete-btn {
     padding: 1px;
+   }
+
+   .tag {
+    display: inline-block;
    }
 </style>
 
@@ -49,11 +54,14 @@
     <div class="container">
       <div class="task row-fluid" id="display-task">
         <div class="span" data-tid="<%= t.id %>" data-uid="<%= current_user.id %>">
-          <div class="description"><%= t.description %></div>
-          <div class="tag"><%= t.tag %></div>
+          <div class="description span-3"><%= t.description %></div>
+          <div class="tag span-3"><%= t.tag %></div>
           <div class="bignum guess"><%= t.duration %></div>
           <div class="label">minutes</div>
           <div class="label">your guess</div>
+          <div class="bignum estimate"><%= t.estimated_time or t.duration %></div>
+          <div class="label">minutes</div>
+          <div class="label">our estimate</div>
           <div class="start-btn"></div>
           <div class="btn btn-danger delete-btn">x</div>
         </div>
