@@ -53,7 +53,10 @@ YHack::Application.routes.draw do
   resources :dashboard
 
   resources :users do
-    resources :tasks
+    resources :tasks do
+      post 'start', on: :member
+      post 'finish', on: :member
+    end
   end
 
   match 'auth/:provider/callback', to: 'sessions#create'
