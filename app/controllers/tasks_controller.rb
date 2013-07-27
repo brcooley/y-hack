@@ -30,11 +30,17 @@ class TasksController < ApplicationController
   def start
     @task = Task.find(params[:id])
     @task.start_task
+    respond_to do |format|
+      format.js
+    end
   end
 
   def finish
     @task = Task.find(params[:id])
     @task.finish_task(params[:time_elapsed])
+    respond_to do |format|
+      format.js
+    end
   end
 
 end
