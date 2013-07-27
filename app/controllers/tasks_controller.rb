@@ -21,7 +21,10 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    render "dashboard/index"
+    @tasks = current_user.tasks
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

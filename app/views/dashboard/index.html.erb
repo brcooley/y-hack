@@ -30,7 +30,7 @@
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary" id="save-btn">Save changes</button>
+    <button class="btn btn-primary" data-dismiss="modal" id="save-btn">Save changes</button>
   </div>
 </div>
 
@@ -59,20 +59,20 @@
 		var savebtn = $('#save-btn')
 		// savebtn[0].onclick = null;
 		savebtn.click(function() {
-      var event = {task: {
-        'description': $('input[name="description"]').val(),
-        'tag': $('.tm-tag > span').html(),
-        'duration': $('input[name="duration"]').val()
-      }};
-      console.log(event);
-			$.ajax({
-				type: 'POST',
-				url: $('#wrap').data('url'),
-				data: event,
-				success: function() {
-					console.log('Task saved');
-				}
-			});
+	      var event = {task: {
+    	    'description': $('input[name="description"]').val(),
+        	'tag': $('.tm-tag > span').html(),
+	        'duration': $('input[name="duration"]').val()
+	      }};
+    	  console.log(event);
+		  $.ajax({
+			type: 'POST',
+			url: $('#wrap').data('url'),
+			data: event,
+			success: function() {
+				console.log('Task saved');
+			}
+		  });
 		});
 	})
 </script>

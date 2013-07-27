@@ -11,17 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727133338) do
+ActiveRecord::Schema.define(:version => 20130727165021) do
 
   create_table "tasks", :force => true do |t|
     t.string   "description"
-    t.time     "duration"
+    t.integer  "duration"
     t.datetime "start"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "tag"
     t.boolean  "finished"
+    t.integer  "actual_time"
+    t.integer  "estimated_time"
   end
 
   add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"

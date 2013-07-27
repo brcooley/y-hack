@@ -39,3 +39,5 @@ nosetests.xml
 *.db
 *.sqlite3
 *.lock
+tmp/*
+log/*
