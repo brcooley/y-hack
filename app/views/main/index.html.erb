@@ -20,27 +20,26 @@
         text-align: center;
 
       }
-      .container {
-        width: 300px;
+
+      .logo {
+        color: white;
+        font-weight: 900;
       }
 
-      /* The white background content wrapper */
-      .container > .content {
-        background-color: #fff;
-        padding: 20px;
-        margin: 0 -20px; 
-        -webkit-border-radius: 10px 10px 10px 10px;
-           -moz-border-radius: 10px 10px 10px 10px;
-                border-radius: 10px 10px 10px 10px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-                box-shadow: 0 1px 2px rgba(0,0,0,.15);
-      }
 
 	  .login-form {
 		margin-left: 65px;
 		background-color: #16A085; 
 	  }
+
+	  a {
+	  	color: #34495E;
+	  }
+
+    a:hover {
+      color: white;
+
+    }
 	
 	  legend {
 		margin-right: -50px;
@@ -52,9 +51,9 @@
 
 </head>
 <body>
-<h1>Estimately</h1>
-	<div>
+<div class="logo">Estimately</div>
+	<div class="fb-link">
 		<%= link_to "Sign in with facebook", "/auth/facebook", id: "fb" %>
-	<div>
+	</div>
 </body>
 </html>
