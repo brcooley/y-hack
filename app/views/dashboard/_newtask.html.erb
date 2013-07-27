@@ -1,0 +1,51 @@
+<style type="text/css">
+   .task {
+   	background-color: #34495E;
+   	border-radius: 4px;
+   	padding: 10px;
+   	margin-top: 10px;
+   	color: white;
+   	-webkit-transition: all .2s ease-in-out;
+ 	-moz-transition: all .2s ease-in-out;
+   }
+
+   .task:hover {
+   	background-color: #2C3E50;
+   }
+
+   .add {
+   	margin-top: 10px;
+   }
+
+   .bignum {
+   	font-size: 60px;
+   	font-weight: 800;
+   }
+</style>
+
+<script>
+	function showDiv() {
+	   document.getElementById('newtask').style.display = "block";
+	}
+</script>
+
+
+
+
+<div class="container">
+
+
+	<div class="task row-fluid" id="newtask" style="display:none;">
+		<div class="span">
+			<div class="name" contenteditable="true">Name</div>
+			<div class="tag" contenteditable="true">Tag</div>
+			
+			<div class="bignum guess" contenteditable="true">10</div>
+			<div class="label">minutes</div>
+			<div class="label">your guess</div>
+			<div class="start-btn"></div>
+			<div class="btn" id="save-btn">Save</div>
+			<div class="btn btn-danger" id="delete-btn" style="padding=1px;">x</div>
+		</div>
+	</div>
+</div>
