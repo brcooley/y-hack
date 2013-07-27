@@ -1,8 +1,25 @@
-<div class="span-9" id="event-feed">
-	Events go here
+<div class="row" id="task-feed">
+	<%= render partial: "newtask" %>
 </div>
 <script>
 	$(document).ready(function() {
-		console.log('here');
+		// Save task
+		var savebtn = $('#save-btn')
+		savebtn[0].onclick = null;
+		savebtn.click(function() {
+			var event = {
+				'name': $('#newtask > .name').html(),
+				'tag': $('#newtask > .tag').html(),
+				'guess': $('#newtask > .guess').html()
+			}
+			$.ajax({
+				type: 'POST',
+				url: '',
+				data: event,
+				success: function() {
+					console.log('Task saved');
+				}
+			});
+		});
 	})
 </script>
