@@ -33,3 +33,6 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Ignore application configuration
+/config/application.yml
