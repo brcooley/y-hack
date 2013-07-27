@@ -4,7 +4,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    current_user.tasks.create(params[:task])
+    @task = current_user.tasks.create(params[:task])
+    @task.analyze
     @tasks = current_user.tasks
     respond_to do |format|
       format.js
@@ -20,6 +21,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
+    redirect_to dashboard/index
   end
 
 end
