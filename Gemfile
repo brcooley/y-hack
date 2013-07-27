@@ -28,6 +28,7 @@ gem 'jquery-rails'
 # Improve rails error pages
 gem 'better_errors'
 gem 'binding_of_caller', '>=0.7.1'
+gem 'font-awesome-rails'
 
 # Bootstrap, duh
 gem 'bootstrap-sass'
