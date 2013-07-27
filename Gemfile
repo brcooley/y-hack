@@ -33,6 +33,7 @@ gem 'font-awesome-rails'
 # Bootstrap, duh
 gem 'bootstrap-sass'
 gem 'flat-ui-rails'
+gem 'tagmanager-rails'
 
 # Faster server
 gem 'thin'
