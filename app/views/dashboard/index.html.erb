@@ -2,30 +2,13 @@
     /* Override some defaults */
     html, body {
       background-color: #1ABC9C;
-    }   
+    }
 </style>
 <div class="row" id="task-feed">
 	<%= render partial: "newtask" %>
 </div>
-<script>
-	$(document).ready(function() {
-		// Save task
-		var savebtn = $('#save-btn')
-		savebtn[0].onclick = null;
-		savebtn.click(function() {
-			var event = {
-				'name': $('#newtask > .name').html(),
-				'tag': $('#newtask > .tag').html(),
-				'guess': $('#newtask > .guess').html()
-			}
-			$.ajax({
-				type: 'POST',
-				url: '',
-				data: event,
-				success: function() {
-					console.log('Task saved');
-				}
-			});
-		});
-	})
-</script>
+<footer class="row">
+	<div id="stat-summary">
+		<p class="span-6">You <% %> by an average of <% %> minute(s)</p>
+	</div>
+</footer>
