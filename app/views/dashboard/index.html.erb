@@ -6,32 +6,32 @@
 
 </style>
 <div id="wrap">
-	<div class="row" id="task-feed">
+  <div class="row" id="task-feed" data-url="<%= user_tasks_path(current_user) %>">
 		<%= render partial: "newtask" %>
 	</div>
 </div>
+
 <footer class="row">
 	<div id="stat-summary span-6">
 		<p>You <% %> by an average of <% %> minute(s)</p>
 	</div>
 </footer>
-<%= javascript_tag do %>
-	cur_user = '<% current_user %>';
-<% end %>
+
+
 <script>
 	$(document).ready(function() {
 		// Save task
 		var savebtn = $('#save-btn')
 		savebtn[0].onclick = null;
 		savebtn.click(function() {
-			var event = {
-				'name': $('#newtask > .name').html(),
-				'tag': $('#newtask > .tag').html(),
-				'guess': $('#newtask > .guess').html()
-			}
+      var event = {task: {
+        'name': $('#newtask > .name').html(),
+        'duration': $('#newtask > .tag').html(),
+      }};
+      console.log(event);
 			$.ajax({
 				type: 'POST',
-				url: '/users/' + cur_user + '/tasks',
+				url: $('#task-feed').data('url'),
 				data: event,
 				success: function() {
 					console.log('Task saved');
