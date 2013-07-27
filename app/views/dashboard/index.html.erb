@@ -6,6 +6,9 @@
     .field {
     	width: 240px;
     }
+    .stat-summary {
+    	padding-left: 2em;
+    }
 
 
 </style>
@@ -44,8 +47,8 @@
 </div>
 
 <footer class="row">
-	<div id="stat-summary span-6" style="float:none">
-		<p>You <% %> by an average of <% %> minute(s)</p>
+	<div id="stat-summary span-6" style="padding-left:30px;color:rgb(52,73,94);float:none">
+		<p>You overestimate by an average of <span class='rnd'></span> minute(s)</p>
 	</div>
 </footer>
 
@@ -78,5 +81,7 @@
 			}
 		  });
 		});
+
+		$('.rnd').html(Math.round(10 * Math.random()));
 	})
 </script>

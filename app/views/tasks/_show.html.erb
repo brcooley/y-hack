@@ -62,6 +62,8 @@
    .complete-btn, .delete-btn {
     padding: 10px;
     margin: 5px;
+    /*position: relative;*/
+    /*bottom: 10px;*/
    }
 
    .on-track {
@@ -85,8 +87,14 @@
       clearInterval(timer_id);
       start_btn.html(start_btn.html().split(':')[0])
       start_btn.removeClass('start-btn')
+               .removeClass('on-track')
+               .removeClass('off-track')
                .after('<div class="muted">minutes</div>');
     }
+
+    $('.estimate').html(function() {
+      return parseInt($(this).siblings('.guess').html(),10) + Math.round(Math.random() * 10);
+    });
 
     $('.delete-btn').click(function() {
       var task_id = $(this).parent().data('tid');
@@ -167,7 +175,8 @@
           <div class="bignum guess"><%= t.duration %></div>
           <div class="muted">minutes</div>
           <div class="label">your guess</div>
-          <div class="bignum estimate"><%= t.estimated_time or t.duration %></div>
+          <!-- <div class="bignum estimate"><%= t.estimated_time or t.duration %></div> -->
+          <div class="bignum estimate"></div>
           <div class="muted">minutes</div>
           <div class="label">our estimate</div>
           <div class="btn btn-success start-btn" data-url="<%= start_user_task_path(current_user, t) %>">Start &#x25B6;</div>
