@@ -3,9 +3,12 @@
     html, body {
       background-color: #1ABC9C;
     }
+
 </style>
-<div class="row" id="task-feed">
-	<%= render partial: "newtask" %>
+<div id="wrap">
+	<div class="row" id="task-feed">
+		<%= render partial: "newtask" %>
+	</div>
 </div>
 <footer class="row">
 	<div id="stat-summary span-6">
@@ -15,3 +18,25 @@
 <%= javascript_tag do %>
 	cur_user = '<% current_user %>';
 <% end %>
+<script>
+	$(document).ready(function() {
+		// Save task
+		var savebtn = $('#save-btn')
+		savebtn[0].onclick = null;
+		savebtn.click(function() {
+			var event = {
+				'name': $('#newtask > .name').html(),
+				'tag': $('#newtask > .tag').html(),
+				'guess': $('#newtask > .guess').html()
+			}
+			$.ajax({
+				type: 'POST',
+				url: '/users/' + cur_user + '/tasks',
+				data: event,
+				success: function() {
+					console.log('Task saved');
+				}
+			});
+		});
+	})
+</script>
