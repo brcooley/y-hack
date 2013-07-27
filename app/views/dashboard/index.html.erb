@@ -3,15 +3,20 @@
     html, body {
       background-color: #1ABC9C;
     }
+
 </style>
-<div class="row" id="task-feed" data-url="<%= user_tasks_path(current_user) %>">
-	<%= render partial: "newtask" %>
+<div id="wrap">
+  <div class="row" id="task-feed" data-url="<%= user_tasks_path(current_user) %>">
+		<%= render partial: "newtask" %>
+	</div>
 </div>
+
 <footer class="row">
 	<div id="stat-summary span-6">
 		<p>You <% %> by an average of <% %> minute(s)</p>
 	</div>
 </footer>
+
 
 <script>
 	$(document).ready(function() {
